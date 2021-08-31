@@ -7,7 +7,9 @@
   <title>Document</title>
 </head>
 <body>
-  <!-- <form action="/users" method="post" accept-charset="UTF-8">
+  
+<!-- 
+  <form action="/users" method="post" accept-charset="UTF-8">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     <label for="username">Username:</label>
     <input id="username" name="user[username]" type="text" />
@@ -16,13 +18,27 @@
     <label for="password">Password:</label>
     <input id="password" name="user[password]" type="password" />
     <input type="submit" value="Submit">
-  </form> -->
+  </form> 
+-->
 
-    <%= form_tag('/users') do -%>
-      <%= text_field_tag 'username', nil, placeholder: 'Username'%>
+<!--  
+    <%= form_tag('/users') do %>
+      <%= text_field_tag 'username', nil, placeholder: 'Username' %>
       <%= email_field_tag 'email', nil, placeholder: 'email@example.com' %>
       <%= password_field_tag 'password', nil %>
       <%= submit_tag 'Submit' %>
-    <% end -%>
+    <% end -%> 
+-->
+<div class="form">
+  <div class="form-title">Login</div>
+  <%= form_with model: @user, class: 'form-body' do |form|%>
+    <%= form.text_field :username, placeholder: "Username", class: 'username' %>
+    <%= form.email_field :email, placeholder: "email@example.com", class: 'email' %>
+    <%= form.password_field :password, placeholder: "Password", class: 'password' %>
+    <%= form.submit "Login", class: 'submit' %>
+  <% end %>
+
+  <div class="form-errors"></div>
+</div>
 </body>
 </html>
