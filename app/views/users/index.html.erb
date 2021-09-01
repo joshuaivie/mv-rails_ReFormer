@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Users</title>
+</head>
+<body>
+  <%= render 'notifications' %>
+  <div class="user-container">
+  <div class="user-container-title">Users</div>
+  <ul class="user-container-list">
+    <% @users.each do |user|%>
+      <li>
+        <%= user.username %>
+        <%= user.email%>
+        <%= link_to 'Edit', edit_user_path(user) %>
+        <%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </li>
+    <% end %>
+  </ul>
+  <div class="user-container-new"><%= link_to 'Add User', new_user_path %></div>
+</div>
+</body>
+</html>

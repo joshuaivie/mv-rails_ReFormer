@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Add User</title>
 </head>
 <body>
   
@@ -29,16 +29,17 @@
       <%= submit_tag 'Submit' %>
     <% end -%> 
 -->
+<%= render 'notifications' %>
 <div class="form">
   <div class="form-title">Login</div>
   <%= form_with model: @user, class: 'form-body' do |form|%>
     <%= form.text_field :username, placeholder: "Username", class: 'username' %>
     <%= form.email_field :email, placeholder: "email@example.com", class: 'email' %>
     <%= form.password_field :password, placeholder: "Password", class: 'password' %>
-    <%= form.submit "Login", class: 'submit' %>
+    <%= form.submit "Create User", class: 'submit' %>
   <% end %>
 
-  <div class="form-errors"></div>
+  <%= render "form_errors" %>
 </div>
 </body>
 </html>

@@ -1,4 +1,9 @@
 class UsersController < ApplicationController
+def index
+  @users = User.order("id")
+end
+
+
   def new
     @user = User.new
   end
@@ -18,15 +23,24 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-      if @user.update_attributes(user_params)
-        flash[:success] = "User was successfully updated"
-        redirect_to @user
+      if @user.update(user_params)
+        redirect_to root_path, success: "User was successfully updated"
       else
         flash[:error] = "Something went wrong"
         render 'edit'
       end
   end
   
+  def destroy
+    @user = User.find(params[:id])
+    if @user.destroy
+      flash[:success] = 'User was successfully deleted.'
+      redirect_to root_path
+    else
+      flash[:error] = 'Something went wrong'
+      redirect_to root_path
+    end
+  end
 
   private
   def user_params

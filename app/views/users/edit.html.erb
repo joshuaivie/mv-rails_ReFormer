@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit User</title>
+</head>
+<body>
+  <%= render 'notifications' %>
+  <div class="form">
+  <div class="form-title">Edit Credentials</div>
+  <%= form_with model: @user, method: :patch, class: 'form-body' do |form|%>
+    <%= form.text_field :username, value: @user.username, placeholder: "Username", class: 'username' %>
+    <%= form.email_field :email, value: @user.email,  placeholder: "email@example.com", class: 'email' %>
+    <%= form.password_field :password, placeholder: "Password", class: 'password' %>
+    <%= form.submit "Edit User", class: 'submit' %>
+  <% end %>
+
+  <%= render "form_errors" %>
+</div>
+</body>
+</html>
